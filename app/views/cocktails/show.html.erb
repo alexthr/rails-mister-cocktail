@@ -1,0 +1,16 @@
+<div class="banner" style="background: url('<%= @cocktail.picture_url %>'); background-size: cover; background-position: center-top;">
+  <h1><%= @cocktail.name %></h1>
+</div>
+
+<div class="container">
+  <% @doses.each do |dose| %>
+    <p><%= dose.ingredient.name %>: <%= dose.description %> <%= link_to "", cocktail_dose_path(@cocktail, dose), method: "delete", class: "fas fa-trash alt" %></p>
+  <% end %>
+
+  <%= link_to new_cocktail_dose_path(@cocktail) do %>
+    <button class='btn btn-primary'><i class='fas fa-plus'></i> Add Ingredients</button>
+  <% end %>
+  <%= link_to cocktails_path do %>
+    <button class='btn btn-primary'><i class='far fa-arrow-alt-circle-left'></i> Back to list</button>
+  <% end %>
+</div>
