@@ -7,7 +7,7 @@
               <i id= "delete-cocktail" class="fas fa-times"></i>
           <% end %>
           <%= link_to cocktail_path(cocktail) do %>
-          <div class="card" style="background: url('<%= cocktail.picture_url %>'); background-size: cover;">
+          <div class="card" style="background: url('<%= cl_image_path cocktail.photo %>'); background-size: cover;">
             <h3 class="cocktail-name"><%= cocktail.name %></h3>
             <% @doses = cocktail.doses %>
             <ul class="cocktail-ingredients">

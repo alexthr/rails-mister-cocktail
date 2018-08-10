@@ -1,4 +1,4 @@
-<div class="background" style="background: linear-gradient(190deg,rgba(0,0,0,0.1), rgba(0,0,0,0.9)) ,url('<%= @cocktail.picture_url %>') 0 0 no-repeat; background-size: cover">
+<div class="background" style="background: linear-gradient(190deg,rgba(0,0,0,0.1), rgba(0,0,0,0.9)) ,url('<%= cl_image_path @cocktail.photo %>') 0 0 no-repeat; background-size: cover">
   <h1 style="margin: 0;"><%= @cocktail.name %></h1>
   <div class="container">
     <h2>Ingredients:</h2>
