@@ -7,4 +7,22 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+// console.log("hello");
+
 import 'bootstrap';
+
+
+const addDoseBtn = document.getElementById("add-dose-btn");
+const addDoseForm = document.getElementById("add-dose-form");
+const SubmitFormBtn = document.querySelector("#-dose-form .btn");
+
+addDoseBtn.addEventListener("click", () => {
+  console.log("hello");
+  addDoseBtn.style.display = "none";
+  addDoseForm.style.display = "block";
+});
+
+SubmitFormBtn.addEventListener("click", () => {
+  addDoseBtn.style.display = "block";
+  addDoseForm.style.display = "none";
+});

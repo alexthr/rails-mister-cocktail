@@ -1,16 +1,23 @@
-<div class="banner" style="background: url('<%= @cocktail.picture_url %>'); background-size: cover; background-position: center-top;">
-  <h1><%= @cocktail.name %></h1>
+<div class="background" style="background: linear-gradient(190deg,rgba(0,0,0,0.1), rgba(0,0,0,0.9)) ,url('<%= @cocktail.picture_url %>') 0 0 no-repeat; background-size: cover">
+  <h1 style="margin: 0;"><%= @cocktail.name %></h1>
+  <div class="container">
+    <h2>Ingredients:</h2>
+    <% @cocktail.doses.each do |dose| %>
+      <p><%= dose.ingredient.name %>: <%= dose.description %> <%= link_to "", cocktail_dose_path(@cocktail, dose), method: "delete", class: "fas fa-trash alt" %></p>
+    <% end %>
+    <button id="add-dose-btn" class='btn btn-primary'><i class='fas fa-plus'></i> Add Ingredients</button>
+    <%= link_to cocktails_path do %>
+      <button id="back-btn" class='btn btn-primary'><i class='far fa-arrow-alt-circle-left'></i> Back to list</button>
+    <% end %>
+
+    <div id="add-dose-form">
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.association :ingredient, collection: Ingredient.all.order(:name) %>
+      <%= f.input :description %>
+      <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-  <% @doses.each do |dose| %>
-    <p><%= dose.ingredient.name %>: <%= dose.description %> <%= link_to "", cocktail_dose_path(@cocktail, dose), method: "delete", class: "fas fa-trash alt" %></p>
-  <% end %>
 
-  <%= link_to new_cocktail_dose_path(@cocktail) do %>
-    <button class='btn btn-primary'><i class='fas fa-plus'></i> Add Ingredients</button>
-  <% end %>
-  <%= link_to cocktails_path do %>
-    <button class='btn btn-primary'><i class='far fa-arrow-alt-circle-left'></i> Back to list</button>
-  <% end %>
-</div>

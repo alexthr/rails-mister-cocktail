@@ -1,0 +1,30 @@
+.background {
+height: calc(100vh - 70px);
+
+}
+
+.background h1 {
+  color: white;
+  text-align: center;
+  padding: 50px;
+}
+
+.container {
+  padding-top: 50px;
+  color: white;
+}
+
+#back-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.container p {
+  margin: 10px 0;
+  font-size: 25px;
+}
+
+#add-dose-form {
+  display: none;
+}
