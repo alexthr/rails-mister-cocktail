@@ -12,32 +12,24 @@
 
 <body>
   <div class="navbar-wagon">
-    <!-- Logo -->
-    <a href="/" class="navbar-wagon-brand">
-      <%= image_tag 'cocktail.png' %>
-      <span>Mister Cocktail</span>
-    </a>
+  <!-- Logo -->
+  <a href="/" class="navbar-wagon-brand">
+    <%= image_tag 'cocktail.png' %>
+    <span>Mister Cocktail</span>
+  </a>
 
-    <!-- Right Navigation -->
-    <div class="navbar-wagon-right hidden-xs hidden-sm">
-      <%= link_to "Cocktails", cocktails_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to new_cocktail_path do %>
-        <button class='btn btn-primary'><i class='fas fa-plus'></i> Add Cocktail</button>
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <%= link_to new_cocktail_path do %>
+      <button class='btn btn-primary'><i class='fas fa-plus'></i> Add Cocktail</button>
+    <% end %>
+    <div class="search-form">
+      <%= simple_form_for cocktails_path, method: :get do |f| %>
+        <%= f.input :search, label: false, placeholder: "Search" %>
       <% end %>
-
-      <!-- Profile picture with dropdown list -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Log Out</a></li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
+</div>
   <%= yield %>
   <%= javascript_pack_tag 'application' %>
 </body>

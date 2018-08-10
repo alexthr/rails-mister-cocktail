@@ -1,6 +1,10 @@
 class CocktailsController < ApplicationController
   def index
-    @cocktails = Cocktail.all
+    if params[cocktails_path]
+      @cocktails = Cocktail.where("name LIKE ?", "%#{params[cocktails_path][:search].capitalize}%")
+    else
+      @cocktails = Cocktail.all
+    end
   end
 
   def show
@@ -27,6 +31,6 @@ class CocktailsController < ApplicationController
   private
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :photo)
+    params.require(:cocktail).permit(:name, :photo, :search)
   end
 end
